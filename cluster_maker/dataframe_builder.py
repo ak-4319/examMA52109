@@ -50,7 +50,7 @@ def define_dataframe_structure(column_specs: List[Dict[str, Any]]) -> pd.DataFra
         if name is None or reps is None:
             raise ValueError("Each column_specs entry must have 'name' and 'reps' keys.")
         if not isinstance(reps, Sequence):
-            raise TypeError("'reps' must be a sequence of values.")
+            raise ValueError("'reps' must be a sequence of values.")
         if len(reps) != n_clusters:
             raise ValueError("All 'reps' lists must have the same length.")
         data[name] = list(reps)
