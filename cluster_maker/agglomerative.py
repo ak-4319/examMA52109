@@ -43,11 +43,19 @@ def agglomerative_clustering(
     if k <= 1:
         raise ValueError("Number of clusters k must be greater than 1.")
 
-    model = AgglomerativeClustering(
-        n_clusters=k,
-        linkage=linkage,
-        affinity=affinity,
-    )
+    if linkage == "ward":
+        # Ward linkage only works with Euclidean distance
+        model = AgglomerativeClustering(
+            n_clusters=k,
+            linkage=linkage,
+        )
+    else:
+        model = AgglomerativeClustering(
+            n_clusters=k,
+            linkage=linkage,
+            metric=metric,   # use metric instead of affinity
+        )
+
     labels = model.fit_predict(X)
 
     # Compute approximate centroids
