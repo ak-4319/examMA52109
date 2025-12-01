@@ -29,7 +29,7 @@ def export_to_csv(
     include_index : bool, default False
     """
     if not isinstance(data, pd.DataFrame):
-        raise TypeError("data must be a pandas DataFrame.")
+        raise ValueError("data must be a pandas DataFrame.")
     data.to_csv(filename, sep=delimiter, index=include_index)
 
 
@@ -49,7 +49,7 @@ def export_formatted(
     include_index : bool, default False
     """
     if not isinstance(data, pd.DataFrame):
-        raise TypeError("data must be a pandas DataFrame.")
+        raise ValueError("data must be a pandas DataFrame.")
 
     table_str = data.to_string(index=include_index)
 
