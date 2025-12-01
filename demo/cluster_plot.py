@@ -25,7 +25,7 @@ OUTPUT_DIR = "demo_output"
 
 def main(args: List[str]) -> None:
     if len(args) != 1:
-        print("Usage: python clustering_demo.py <input_csv>")
+        print("Usage: python cluster_plot.py <input_csv>")
         sys.exit(1)
 
     input_path = args[0]
@@ -59,7 +59,7 @@ def main(args: List[str]) -> None:
             input_path=input_path,
             feature_cols=feature_cols,
             algorithm="kmeans",
-            k = min(k, 3),
+            k = k,
             standardise=True,
             output_path=os.path.join(OUTPUT_DIR, f"{base}_clustered_k{k}.csv"),
             random_state=42,
