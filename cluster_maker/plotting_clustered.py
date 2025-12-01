@@ -49,7 +49,7 @@ def plot_clusters_2d(
                 marker="h",
                 s=200,
                 linewidths=2,
-                c=cmap(i),                    # <- use same “c” as labels
+                color=cmap(i),                    # <- use same “c” as labels
                 cmap=scatter.cmap,        # <- same colormap
                 norm=scatter.norm,        # <- same normalisation
                 edgecolor="black",
