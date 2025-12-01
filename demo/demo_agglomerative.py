@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 from cluster_maker.preprocessing import select_features, standardise_features
 from cluster_maker.agglomerative import agglomerative_clustering
-from cluster_maker.evaluation import compute_inertia, compute_silhouette
+from cluster_maker.evaluation import compute_inertia, silhouette_score_sklearn
 from cluster_maker.plotting_clustered import plot_clusters_2d
 
 # ---------------------------------------------------------------------
@@ -32,7 +32,7 @@ labels, centroids = agglomerative_clustering(X, k=k, linkage="ward")
 # Compute metrics
 inertia = compute_inertia(X, labels, centroids)
 try:
-    silhouette = compute_silhouette(X, labels)
+    silhouette = silhouette_score_sklearn(X, labels)
 except ValueError:
     silhouette = None
 
