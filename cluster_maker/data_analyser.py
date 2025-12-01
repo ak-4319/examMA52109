@@ -23,8 +23,8 @@ def calculate_descriptive_statistics(data: pd.DataFrame) -> pd.DataFrame:
         Result of `data.describe()` including count, mean, std, etc.
     """
     if not isinstance(data, pd.DataFrame):
-        raise TypeError("data must be a pandas DataFrame.")
-    return data.describe()
+        raise ValueError("data must be a pandas DataFrame.")
+    return data.describe(include=[pd.np.number])
 
 
 def calculate_correlation(data: pd.DataFrame) -> pd.DataFrame:
@@ -41,5 +41,5 @@ def calculate_correlation(data: pd.DataFrame) -> pd.DataFrame:
         Correlation matrix.
     """
     if not isinstance(data, pd.DataFrame):
-        raise TypeError("data must be a pandas DataFrame.")
+        raise ValueError("data must be a pandas DataFrame.")
     return data.corr(numeric_only=True)
